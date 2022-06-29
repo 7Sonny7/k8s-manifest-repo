@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-frontend-jw
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: frontend-fargate-jw
+  template:
+    metadata:
+      labels:
+        app: frontend-fargate-jw
+    spec:
+      containers:
+        - name: demo-frontend-jw
+          image: 160270626841.dkr.ecr.ap-northeast-2.amazonaws.com/demo-frontend-jw:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
